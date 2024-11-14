@@ -1,0 +1,10 @@
+Workings of YACC
+YACC in compiler design is set to work in C programming language along with its parser generator.
+
+An input with a .y extension is given.
+The file is invoked, and 2 files, y.tab.h and y.tab.c, are created. These files contain long codes implementing the LARl (1) Parser for grammar.
+This file then provides yyparse.y, which tries to parse a valid sentence successfully.
+For the output files, 
+
+If called with the –d option in the command line, YACC produces y.tab.h with all its specific definitions.
+If called with the –v option, YACC produces y.output having a textual description of the LALR(1) parsing table.

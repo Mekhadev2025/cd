@@ -1,0 +1,66 @@
+BEGIN
+  FUNCTION e
+    Set op = "TE'"
+    Print current op and production rule "E->TE'"
+    CALL t()
+    CALL e_prime()
+
+  FUNCTION e_prime
+    Remove any 'e' from op
+    IF input symbol at ip_ptr == '+'
+      Insert "+TE'" in op at correct position
+      Print current op and production rule "E'->+TE'"
+      Advance input pointer
+      CALL t()
+      CALL e_prime()
+    ELSE
+      Set op to include epsilon (e)
+      Print current op and production rule "E'->e"
+
+  FUNCTION t
+    Remove any 'e' from op
+    Insert "FT'" in op at correct position
+    Print current op and production rule "T->FT'"
+    CALL f()
+    CALL t_prime()
+
+  FUNCTION t_prime
+    Remove any 'e' from op
+    IF input symbol at ip_ptr == '*'
+      Insert "*FT'" in op at correct position
+      Print current op and production rule "T'->*FT'"
+      Advance input pointer
+      CALL f()
+      CALL t_prime()
+    ELSE
+      Set op to include epsilon (e)
+      Print current op and production rule "T'->e"
+
+  FUNCTION f
+    Remove any 'e' from op
+    IF input symbol at ip_ptr == 'i' or 'I'
+      Replace 'F' in op with 'i'
+      Print current op and production rule "F->i"
+      Advance input pointer
+    ELSE IF input symbol at ip_ptr == '('
+      Advance input pointer
+      CALL e()
+      IF input symbol at ip_ptr == ')'
+        Advance input pointer
+        Replace 'F' in op with '(E)'
+        Print current op and production rule "F->(E)"
+      ELSE
+        Print syntax error and exit
+    ELSE
+      Print syntax error and exit
+
+  FUNCTION advance
+    Increment ip_ptr to advance to the next input symbol
+
+  FUNCTION main
+    Print grammar rules
+    Take input expression from user
+    CALL e()
+    Check for any unhandled symbols in the input expression
+    Print "Syntax error" if any unrecognized symbols are found
+END

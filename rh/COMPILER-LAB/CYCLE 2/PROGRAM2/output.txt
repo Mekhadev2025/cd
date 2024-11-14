@@ -1,0 +1,21 @@
+
+OUTPUT valid variable 
+mec@cc-2-4:~/RheaCS7A/cycle 2/pgm2$ yacc -d vari.y
+mec@cc-2-4:~/RheaCS7A/cycle 2/pgm2$ lex var.l
+mec@cc-2-4:~/RheaCS7A/cycle 2/pgm2$ gcc lex.yy.c y.tab.c -o output_pgm
+mec@cc-2-4:~/RheaCS7A/cycle 2/pgm2$ ./output_pgm
+
+Enter a name to be tested for identifier: My123
+
+It is a valid identifier!
+mec@cc-2-4:~/RheaCS7A/cycle 2/pgm2$ ./output_pgm
+
+Enter a name to be tested for identifier: 98ik
+
+syntax error
+mec@cc-2-4:~/RheaCS7A/cycle 2/pgm2$ ./output_pgm
+
+Enter a name to be tested for identifier: w234
+
+It is a valid identifier!
+

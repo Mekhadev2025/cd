@@ -1,0 +1,56 @@
+%{
+    #include <stdio.h>
+    int valid = 1;
+%}
+
+%token WHILE PARANTHESIS OPERAND OPERATOR SEMICOLON NEWLINE
+
+%%
+start: WHILE PARANTHESIS condition PARANTHESIS body NEWLINE;
+condition: OPERAND OPERATOR OPERAND;
+body: '{' statements '}' | statements;
+statements: OPERAND OPERATOR OPERAND SEMICOLON | statements statements;
+%%
+
+int yyerror()
+{
+    valid = 0;
+    printf("Invalid.\n");
+    return 1;
+}
+
+void main()
+{
+    printf("Enter string:\n");
+    yyparse();
+
+    if (valid)
+        printf("Valid.\n");
+       
+       
+       
+       
+       
+        %{
+#include "y.tab.h"
+%}
+
+%%
+while                 return WHILE;
+if                    return IF;
+[\(\)]                return PARANTHESIS;
+[a-zA-Z0-9]+          return OPERAND;
+"="|"<"|">"|"<="|">=" return OPERATOR;
+\;                    return SEMICOLON;
+\n                    return NEWLINE;
+.                     ;
+%%
+
+int yywrap()
+{
+    return 1;
+}
+
+       
+       
+}

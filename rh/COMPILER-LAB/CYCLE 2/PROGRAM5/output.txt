@@ -1,0 +1,43 @@
+ec@cc-2-4:~/RheaCS7A/cycle 2/PROGRAM5$ lex for.l
+mec@cc-2-4:~/RheaCS7A/cycle 2/PROGRAM5$ gcc y.tab.c -ll -ly
+y.tab.c: In function ‘yyparse’:
+y.tab.c:1207:16: warning: implicit declaration of function ‘yylex’ [-Wimplicit-function-declaration]
+       yychar = yylex ();
+                ^~~~~
+y.tab.c:1342:7: warning: implicit declaration of function ‘yyerror’ [-Wimplicit-function-declaration]
+       yyerror (YY_("syntax error"));
+       ^~~~~~~
+for.y: At top level:
+for.y:62:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ main() {
+ ^~~~
+mec@cc-2-4:~/RheaCS7A/cycle 2/PROGRAM5$ ./a.out
+Enter the expression:
+for(i=0;i<n;i++)  i=i+1
+;
+Input accepted
+
+mec@cc-2-4:~/RheaCS7A/cycle 2/PROGRAM5$ ./a.out
+Enter the expression:
+for(i=0;i<n;i++){
+    i=i+1;}
+Input accepted
+mec@cc-2-4:~/RheaCS7A/cycle 2/PROGRAM5$ ./a.out
+Enter the expression:
+for(i=0,i++){
+syntax error
+--------------------------------------------------------------NO WARNINGS--------
+mec@cc-2-4:~/RheaCS7A/cycle 2/PROGRAM5$ yacc -d for.y
+mec@cc-2-4:~/RheaCS7A/cycle 2/PROGRAM5$ lex for.l
+mec@cc-2-4:~/RheaCS7A/cycle 2/PROGRAM5$ gcc y.tab.c -ll -ly -w
+mec@cc-2-4:~/RheaCS7A/cycle 2/PROGRAM5$ ./a.out
+Enter the expression:
+for(i=0;i<2;i++){
+    i=i+1;
+}
+Input accepted
+mec@cc-2-4:~/RheaCS7A/cycle 2/PROGRAM5$ ./a.out
+Enter the expression:
+for(i=0,3){
+syntax error
+

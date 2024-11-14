@@ -1,0 +1,9 @@
+Enter a for loop to be checked for syntax correctness:
+for(i=0;i<2;i++)
+The for loop syntax is valid!
+hp@hp-HP-Pavilion-Laptop-14-dv2xxx:~/COMPILER LAB/For_arpitha$ 
+hp@hp-HP-Pavilion-Laptop-14-dv2xxx:~/COMPILER LAB/For_arpitha$ ./a.out
+Enter a for loop to be checked for syntax correctness:
+for(i+1)
+Syntax error: parse error
+

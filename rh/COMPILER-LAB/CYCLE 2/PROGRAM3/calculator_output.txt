@@ -1,0 +1,24 @@
+OUTPUT - CALCULATOR
+
+mec@cc-2-4:~/RheaCS7A/cycle 2/pgm3$ yacc -d cal.y
+mec@cc-2-4:~/RheaCS7A/cycle 2/pgm3$ lex cal.l
+mec@cc-2-4:~/RheaCS7A/cycle 2/pgm3$ gcc lex.yy.c y.tab.c -o output
+mec@cc-2-4:~/RheaCS7A/cycle 2/pgm3$ ./output
+
+Enter Any Arithmetic Expression (Addition, Subtraction, Multiplication, Division, Modulus):
+2+3
+
+Result=5
+
+Entered arithmetic expression is Valid
+
+mec@cc-2-4:~/RheaCS7A/cycle 2/pgm3$ ./output
+
+Enter Any Arithmetic Expression (Addition, Subtraction, Multiplication, Division, Modulus):
+6+7*4
+
+Result=34
+
+Entered arithmetic expression is Valid
+
+
